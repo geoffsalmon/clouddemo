@@ -1,0 +1,21 @@
+Cloud on a stick
+----------------
+
+Summary: usb key + blank server = cloud
+Maintainer: Solomon Hykes <solomon.hykes@dotcloud.com>
+
+Description
+-----------
+
+Level 1: Starting with nothing but a usb key and a bare metal server with a blank disk, provision a fully fonctional private cloud node
+Level 2: Starting with nothing but a usb key and SEVERAL bare metal servers, provision an entire private cloud cluster using netboot
+Level 3: Demonstrate the usefulness of the newly created cloud by deploying stuff to it (perhaps split this into a separate demo)
+
+Tools
+-----
+
+- Image packaging: cloudlets
+- Private cloud: opennebula or eucalyptus
+- USB Key distro: ?
+- Auto-detect, partitioning: ?
+- Hardware: ?
