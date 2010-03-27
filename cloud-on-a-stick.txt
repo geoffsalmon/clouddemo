@@ -19,3 +19,14 @@ Tools
 - USB Key distro: ?
 - Auto-detect, partitioning: ?
 - Hardware: ?
+
+Follow-up
+---------
+
+This demo can be followed by:
+
+- Deploying on a private cloud with libcloud
+- Deploying on a private cloud with jclouds
+- Deploying on a private cloud with fog
+- Deploying on a private cloud with crane & pallet
+
