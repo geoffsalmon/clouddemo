@@ -1,7 +1,7 @@
 (ns cloudhackers.app
   (:require
    [net.cgrand.moustache :as moustache]
-   [cloudhackers.other] :reload
+   [cloudhackers.other]
    ))
 
 (def my-app

@@ -4,14 +4,13 @@
    :exposes-methods {init superInit})
   (:require
    [ring.util.servlet :as servlet]
-   [ring.middleware.reload :as reload]
    )
 )
 
 (defn -service
   [servlet request response]
   
-  (require 'cloudhackers.app :reload)
+  (require 'cloudhackers.app :reload-all)
   (let [handler (ns-resolve 'cloudhackers.app 'my-app)]
     ((servlet/make-service-method handler)
      servlet request response)))
