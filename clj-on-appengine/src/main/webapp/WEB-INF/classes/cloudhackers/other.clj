@@ -1,5 +1,8 @@
 (ns cloudhackers.other)
 
 
-(def stuff
-     "string from other")
+(defn stuff [request]
+  {:status  200
+   :headers {}
+   :body    "this is the body"}
+      )

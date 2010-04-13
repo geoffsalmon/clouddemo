@@ -4,8 +4,8 @@
    [cloudhackers.other]
    ))
 
-(def my-app
+(def apphandler
      (moustache/app
       ["hi"] {:get "Hello world" }
-      ["stuff"] {:get ["stuff: " cloudhackers.other/stuff]}
+      ["stuff"] {:get cloudhackers.other/stuff}
       [&] {:get "default"}))
