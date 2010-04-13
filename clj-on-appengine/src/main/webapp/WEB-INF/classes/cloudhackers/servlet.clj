@@ -30,24 +30,30 @@ given prefixes."
   "Creates a handler function that uses ns-resolve to lookup another
   handler to call"
   [namespace name]
-  (require namespace) ; Require once so that subsequent ns-resolve
-                      ; will work
   (fn [req]
+    ;; Need to require namespace at least once before ns-resolve. Must
+    ;; do this at runtime and not compile time to avoid AOT compiling
+    ;; the namespace. Moved this to the init function to do it exactly
+    ;; once instead of for every request.
+    ;;(require namespace) 
     ((ns-resolve namespace name) req)
     )
   )
 
+
+;; TODO: Change handler in production to avoid reload (and possibly to
+;; avoid ns-resolve too)
+
 (def handler
      (-> (resolve-handler 'cloudhackers.app 'apphandler)
-         ;; TODO: Avoid reload when deployed to production
          (wrap-reload-prefix  "cloudhackers.")
          )
      )
 
 (servlet/defservice handler)
 
-;;(defn -init
-;;  "Override init so that we can dynamically require cloudhackers.app
-;;exactly once to avoid AOT compiling cloudhackers.app"
-;;  ([this config] (.superInit this config))
-;;  ([this] (require 'cloudhackers.app)))
+(defn -init
+  "Override init so that we can dynamically require cloudhackers.app
+exactly once to avoid AOT compiling cloudhackers.app"
+  ([this config] (.superInit this config))
+  ([this] (require 'cloudhackers.app)))
